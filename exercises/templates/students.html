@@ -1,9 +1,23 @@
 {% extends "base.html" %}
+
 {% block content %}
+<h1>Student List</h1>
 
 <ul>
     {% for student in students %}
-    <li>{{ loop.index }}. {{ student }}</li>
+    <li>
+        {{ loop.index }}. {{ student.name }} - Grade: {{ student.grade }}
+        -
+        {% if student.grade >= 90 %}
+        Excellent
+        {% elif student.grade >= 70 %}
+        Good
+        {% elif student.grade >= 60 %}
+        Passing
+        {% else %}
+        Needs Improvement
+        {% endif %}
+    </li>
     {% endfor %}
 </ul>
 
